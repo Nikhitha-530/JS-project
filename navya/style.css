@@ -1,0 +1,240 @@
+/* General Settings */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, #1e1e2e, #121212);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* Canvas */
+canvas {
+    background: #121212;
+    border: 5px solid #333;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #0ff, 0 0 10px #0ff inset;
+}
+
+/* Headings */
+h1 {
+    font-size: 3rem;
+    color: #0ff;
+    /* text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; */
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn {
+    padding: 15px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #121212;
+    background: #0ff;
+    border: none;
+    border-radius: 50px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 10px rgba(0, 255, 255, 0.3), 0 0 10px #0ff inset;
+}
+
+.btn:hover {
+    background: #00e5e5;
+    box-shadow: 0 0 15px #00e5e5, 0 0 25px #00e5e5;
+    transform: scale(1.1);
+}
+
+.rules-btn {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    padding: 10px 20px;
+}
+
+/* Start & Difficulty Buttons */
+.start-btn, .diff-btn {
+    font-size: 1.2rem;
+    width: 250px;
+}
+
+.start {
+    background: #1e1e2e;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+    padding: 20px 40px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.difficulty {
+    background: rgba(18, 18, 18, 0.9);
+    padding: 20px 50px;
+    border-radius: 20px;
+    text-align: center;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Game Over and Win Screens */
+.lose, .win {
+    display: none;
+    position: absolute;
+    top: 380px;
+    left:40%;
+    background: rgba(18, 18, 18, 0.9);
+    color: #fff;
+    padding: 40px 60px;
+    border-radius: 20px;
+    text-align: center;
+    animation: pop-in 0.5s ease-in-out;
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+}
+
+.lose h2 {
+    color: #ff3b3b;
+    text-shadow: 0 0 15px #ff3b3b, 0 0 25px #ff3b3b;
+}
+
+.win h2 {
+    color: #0f0;
+    text-shadow: 0 0 15px #0f0, 0 0 25px #0f0;
+}
+
+/* Rules Panel */
+.rules {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(18, 18, 18, 0.9);
+    color: #fff;
+    width: 400px;
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.8;
+    transform: translateX(-400px);
+    transition: transform 0.6s ease;
+    box-shadow: 5px 0 15px rgba(0, 255, 255, 0.5);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.rules.show {
+    transform: translateX(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pop-in {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Score Display */
+.score {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    text-shadow: 0 0 10px #0ff, 0 0 5px #0ff;
+}
+
+
+@media (max-width: 450px) {
+    body {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    canvas {
+        width: 100%;
+        height: auto;
+        border: 3px solid #333;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #0ff, 0 0 5px #0ff inset;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .rules-btn {
+        top: 10px;
+        left: 10px;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .start {
+        padding: 15px 30px;
+        width: auto;
+    }
+
+    .difficulty {
+        padding: 15px 25px;
+        width: 100%;
+    }
+
+    .diff-btn {
+        font-size: 0.9rem;
+        width: auto;
+        padding: 10px 20px;
+        margin: 5px 0;
+    }
+
+    .lose, .win {
+        width: 90%;
+        top: 300px;
+        left: 5%;
+        padding: 20px 30px;
+    }
+
+    .rules {
+        width: 100%;
+        transform: translateX(-100%);
+    }
+
+    .rules.show {
+        transform: translateX(0);
+    }
+
+    .score {
+        font-size: 1rem;
+        top: 10px;
+        right: 15px;
+    }
+}
+
